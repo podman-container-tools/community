@@ -1,6 +1,7 @@
-# Podman LLM (AI) Development Policy
+# Podman Container Tools LLM (AI) Development Policy
 
-This policy, based on Jellyfin's LLM Policy and licensed under CC-BY-ND-4.0, establishes guidelines for using AI tools in Podman development.
+This policy, based on Jellyfin's LLM Policy and licensed under CC-BY-ND-4.0, establishes guidelines for using AI tools in Podman Container Tools development.
+The policy applies to all our repositories in this GitHub Organization.
 
 ## No LLM-Generated Direct Communication
 
