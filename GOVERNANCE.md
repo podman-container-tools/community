@@ -17,18 +17,21 @@
 * [Updates to this Document](#updates-to-this-document)
 * [Contact](#contact)
 
-# Podman Project
+# Podman Container Tools Project
 
-This document defines the governance of the Podman Project, including its subprojects. It defines the various roles our maintainers fill, how to become a maintainer, and how project-level decisions are made.
+This document defines the governance of the Podman Container Tools Project, including its subprojects. It defines the various roles our maintainers fill, how to become a maintainer, and how project-level decisions are made.
+
+The [Podman](https://github.com/podman-container-tools/podman) repository is the main project we develop.
 
 # Subprojects
 
-The Podman project currently consists of the Podman project (the repository containing this file) and several subprojects:
+Besides Podman the Podman Container Tools project currently consists of several subprojects:
 * [Buildah](https://github.com/podman-container-tools/buildah)
 * [Skopeo](https://github.com/podman-container-tools/skopeo/)
 * [container-libs](https://github.com/podman-container-tools/container-libs)
 * [podman-machine-os](https://github.com/podman-container-tools/podman-machine-os)
 * [automation](https://github.com/podman-container-tools/automation)
+* [image_build](https://github.com/podman-container-tools/image_build)
 
 ## Adding Subprojects
 
@@ -49,7 +52,7 @@ Subprojects which still have contributors will then be moved to a repository in 
 
 # Contributor Ladder
 
-The Podman project has a number of maintainer roles arranged in a ladder. Each role is a rung on the ladder, with different responsibilities and privileges. Community members generally start at the first levels of the "ladder" and advance as their involvement in the project grows. Our project members are happy to help you advance along the contributor ladder. At all levels, contributors are required to follow the CNCF Code of Conduct (COC).
+The Podman Container Tools project has a number of maintainer roles arranged in a ladder. Each role is a rung on the ladder, with different responsibilities and privileges. Community members generally start at the first levels of the "ladder" and advance as their involvement in the project grows. Our project members are happy to help you advance along the contributor ladder. At all levels, contributors are required to follow the CNCF Code of Conduct (COC).
 
 Each of the project member roles below is organized into lists of three types of things.
 
@@ -80,16 +83,16 @@ Description: A Contributor supports the project and adds value to it. Contributi
 	* For repositories hosted on GitHub, Contributors receive no special privileges by default. Contributors who are active in answering questions and assisting with bug reports upstream may request Triage privileges from the repository's maintainers.
 
 ### Reviewer
-Description: A Reviewer has responsibility for the triage of issues and review of pull requests on the Podman project or a subproject, consisting of one or more of the Git repositories that form the project. They are collectively responsible, with other Reviewers, for reviewing changes to the repository or repositories and indicating whether those changes are ready to merge. They have a track record of contribution and review in the project.
+Description: A Reviewer has responsibility for the triage of issues and review of pull requests on the Podman Container Tools project or a subproject, consisting of one or more of the Git repositories that form the project. They are collectively responsible, with other Reviewers, for reviewing changes to the repository or repositories and indicating whether those changes are ready to merge. They have a track record of contribution and review in the project.
 
 Reviewers have all the rights and responsibilities of a Contributor, plus:
 
 * Responsibilities include:
-    * Regular contribution of pull requests to the Podman project or its subprojects
-    * Triage of GitHub issues on the Podman project or its subprojects
-    * Regularly fixing GitHub issues on the Podman project or its subprojects
+    * Regular contribution of pull requests to the Podman Container Tools project or its subprojects
+    * Triage of GitHub issues on the Podman Container Tools project or its subprojects
+    * Regularly fixing GitHub issues on the Podman Container Tools project or its subprojects
     * Following the reviewing guide and issue triage guide in the respective repositories
-    * A sustained high level of pull request reviews on the Podman project or one of its subprojects
+    * A sustained high level of pull request reviews on the Podman Container Tools project or one of its subprojects
     * Assisting new Contributors in their interactions with the project
     * Helping other contributors become reviewers
 * Requirements:
@@ -97,7 +100,7 @@ Reviewers have all the rights and responsibilities of a Contributor, plus:
     * Has participated in pull request review and/or issue triage on the project for at least 6 months. The time requirement may be overridden by a supermajority (66%) vote of Maintainers and Core Maintainers.
     * Is supportive of new and occasional contributors and helps get useful PRs in shape to merge
 * Additional privileges:
-    * Has rights to approve pull requests in the Podman project or a subproject, marking them as ready for a Maintainer to review and merge
+    * Has rights to approve pull requests in the Podman Container Tools project or a subproject, marking them as ready for a Maintainer to review and merge
     * Can recommend and review other contributors to become Reviewers
     * Has permissions to change labels on GitHub to aid in triage
 	* For repositories hosted on GitHub, Reviewers receive Triage privileges by being added to the `<repo-name>-reviewers` team.
@@ -109,7 +112,7 @@ Reviewers have all the rights and responsibilities of a Contributor, plus:
 3. At least two Maintainers of the repository must concur to merge the PR.
 
 ### Maintainer
-Description: Maintainers are established contributors with deep technical knowledge of the Podman project and/or one of its subprojects. Maintainers are granted the authority to merge pull requests, and are expected to participate in making decisions about the strategy and priorities of the project. Maintainers are responsible for code review and merging in a single repository or subproject. It is possible to become Maintainer of additional repositories or subprojects, but each additional repository or project will require a separate application and vote. They are able to participate in all maintainer activities, including Core Maintainer meetings, but do not have a vote at Core Maintainer meetings.
+Description: Maintainers are established contributors with deep technical knowledge of the Podman Container Tools project and/or one of its subprojects. Maintainers are granted the authority to merge pull requests, and are expected to participate in making decisions about the strategy and priorities of the project. Maintainers are responsible for code review and merging in a single repository or subproject. It is possible to become Maintainer of additional repositories or subprojects, but each additional repository or project will require a separate application and vote. They are able to participate in all maintainer activities, including Core Maintainer meetings, but do not have a vote at Core Maintainer meetings.
 
 A Maintainer must meet the responsibilities and requirements of a Reviewer, plus:
 * Responsibilities include:
@@ -142,14 +145,14 @@ the 'CI/CD Admin' *Organization* role which enables them access to organization-
 3. A majority of the current Maintainers of the repository or subproject (including Core Maintainers) must then approve the PR. The need for a majority is removed for Emeritus Maintainers, who require only 2 current Maintainers or Core Maintainers to approve their return.
 
 ### Core Maintainer
-Description: As the Podman project is composed of a number of subprojects, most maintainers will not have full knowledge of the full project and all its technical aspects. Those that do are eligible to become Core Maintainers, responsible for decisions affecting the entire project. Core Maintainers may act as a maintainer in all repositories and subprojects of the Podman Project. It is recognized that fulfilling all responsibilities of a maintainer on all project repositories is an excessive time commitment, so Core Maintainers are encouraged to choose one repository to specialize in and to spend most of their time working in that repository. Core Maintainers are encouraged to assist other repositories that require additional reviews as time allows, and should make an effort to review pull requests in other repositories that will affect multiple repositories (especially ones that will effect the repository they have chosen to specialize in).
+Description: As the Podman Container Tools project is composed of a number of subprojects, most maintainers will not have full knowledge of the full project and all its technical aspects. Those that do are eligible to become Core Maintainers, responsible for decisions affecting the entire project. Core Maintainers may act as a maintainer in all repositories and subprojects of the Podman Container Tools project. It is recognized that fulfilling all responsibilities of a maintainer on all project repositories is an excessive time commitment, so Core Maintainers are encouraged to choose one repository to specialize in and to spend most of their time working in that repository. Core Maintainers are encouraged to assist other repositories that require additional reviews as time allows, and should make an effort to review pull requests in other repositories that will affect multiple repositories (especially ones that will effect the repository they have chosen to specialize in).
 
 * Responsibilities include:
     * All responsibilities of a maintainer on a single repository
     * Determining strategy and policy for the project
 * Requirements
     * Experience as a Maintainer for at least 3 months
-    * Demonstrates a broad knowledge of all components, repositories, and subprojects of the Podman project.
+    * Demonstrates a broad knowledge of all components, repositories, and subprojects of the Podman Container Tools project.
     * Is able to exercise judgment for the good of the project, independent of their employer, friends, or team
     * Mentors new Maintainers and Core Maintainers
     * Able to make decisions and contributions affecting the whole project, including multiple subprojects and repositories
@@ -209,7 +212,11 @@ Emeritus Maintainers have no responsibilities or requirements beyond those of an
 
 # Maintainers File
 
-The definitive source of truth for maintainers of this repository is the local MAINTAINERS.md file. The MAINTAINERS.md file in the main Podman repository is used for project-spanning roles, including Core Maintainer and Community Manager.
+The definitive source of truth for maintainers of any repository is the local MAINTAINERS.md file. The
+[MAINTAINERS.md](MAINTAINERS.md) file in the [community](https://github.com/podman-container-tools/community)
+repository is used for project-spanning roles, including Core Maintainer and Community Manager. Other
+repositories only list the per repository Roles such as Maintainers and Reviewers. If a repository does not
+have a MAINTAINERS.md file then it is assumed that only Core Maintainers have repository access.
 
 ---
 
