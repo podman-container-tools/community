@@ -1,0 +1,3 @@
+# Changes to Governance metadata require core maintainer review.
+# This ensures github notifies all core maintainers.
+GOVERNANCE.md @podman-container-tools/core-maintainers
