@@ -3,18 +3,8 @@
 We'd love to have you join the community!
 Below summarizes the processes that we follow.
 
-Note the Podman Container Tools organization is a large GitHub organization with many different people working on a lot of different tools and libraries.
-The steps listed here do not universally apply to each repository.
-Please make sure to read the contributing docs in each repository as they may do things differently.
-
-This document applies to the following projects:
-
-- [podman](https://github.com/podman-container-tools/podman)
-- [buildah](https://github.com/podman-container-tools/buildah)
-- [skopeo](https://github.com/podman-container-tools/skopeo)
-- [container-libs](https://github.com/podman-container-tools/container-libs)
-- [podman-machine-os](https://github.com/podman-container-tools/podman-machine-os)
-- [automation](https://github.com/podman-container-tools/automation)
+Note the Podman Container Tools organization is a large GitHub organization with many different people working on different tools and libraries.
+Please also read the contributing docs in each repository, if they exist, as they may contain more repository-specific information.
 
 This document is not specific to any language; language-specific guidelines are contained in other files.
 Rules specific to the Go language can be found [here](CONTRIBUTING_GO.md).
@@ -26,22 +16,45 @@ However, most of the things here listed are very generic and apply when contribu
 ## Topics
 
 * [LLM ("AI") Policy](#llm-ai-policy)
+* [Communications](#communications)
 * [Reporting Issues](#reporting-issues)
+* [Working On Issues](#working-on-issues)
 * [Submitting Pull Requests](#submitting-pull-requests)
   * [Describe your Changes in Commit Messages](#describe-your-changes-in-commit-messages)
-  * [Sign your PRs](#sign-your-prs)
+  * [DCO Sign-off](#DCO-Sign-off)
   * [Code review](#code-review)
   * [Rebasing](#rebasing)
 * [Find bad changes with git bisect](#find-bad-changes-with-git-bisect)
+* [Becoming a Maintainer](#becoming-a-maintainer)
 
 ## LLM ("AI") Policy
 
 If your contribution is aided by LLMs or other AI tools, please read the [LLM Policy](LLM_POLICY.md).
 This project follows this LLM policy, which includes comments, issues, PRs, and any other interactions with the team.
 
+## Communications
+
+For general user support questions please use these channels:
+
+- **Matrix**: [Podman Matrix Room](https://matrix.to/#/#podman:matrix.org)
+- **Discord**: [Join our Discord server](https://discord.gg/x5GzFF6QH4)
+- **IRC**: `#podman` on [libera.chat](https://libera.chat/)
+- **GitHub Discussions**: Ask questions and share ideas in our project repositories under the Discussions Tab.
+
+While some maintainers are active in these channels most help is given by other experienced users.
+Please be patient when you ask questions, there is also no guarantee that someone will give you an answer.
+If you think you found a bug it should be reported on GitHub, but see [Reporting Issues](#reporting-issues) first below.
+
+To reach maintainers, use our development Matrix channel on [#podman-dev:matrix.org](https://matrix.to/#/#podman-dev:matrix.org).
+This channel is only used to coordinate the development of the Podman Container Tools Projects.
+Use it to discuss project changes, highlight critical issues, or to ask for reviews of specific PRs.
+Please do not spam this channel with unrelated information.
+
+We follow the CNCF [Code of Conduct](https://github.com/cncf/foundation/blob/main/code-of-conduct.md) across all channels and repositories.
+
 ## Reporting Issues
 
-Before reporting an issue, check our backlog of Open Issues to see if someone else has already reported it.
+Before reporting an issue, check our backlog of Open GitHub Issues to see if someone else has already reported it.
 If so, feel free to add your scenario, or additional information, to the discussion.
 Or simply "subscribe" to it to be notified when it is updated.
 Please do not add comments like "+1" or "I have this issue as well" without adding any new information.
@@ -57,14 +70,47 @@ Not having all requested information makes it much harder to find and fix issues
 A reproducer is the best thing you can include.
 Reproducers make finding and fixing issues much easier for maintainers.
 The easier it is for us to reproduce a bug, the faster it'll be fixed!
+It is your responsibility to narrow down the problem to a reasonable extent. We may not be willing to
+run complex third party applications. Ideally the reproducer uses only our command line applications
+or other common applications that can be assumed to be available on most Linux distributions.
+For example, using curl for API queries is perfectly fine, while some large (unknown) Python script
+with many external dependencies would not be a minimal reproducer.
+If you do not provide the requested information, we may close the issue if we cannot reproduce it.
+
+In general, we only support the latest upstream release. Therefore, we expect you to test that the problem
+still exists in the latest version before reporting a bug. Each release fixes many bugs, so it is possible
+that the problem you report has already been fixed. If you are able to compile from the main branch and
+test there; that would be even better, though we do not normally require that.
+
+Also the issue tracker is for actual problems/features or other things that maintainers
+may need to work on. It is not a tool to get generic end user support, you can use GitHub Discussions for that.
 
 Please don't include any private/sensitive information in your issue!
-Security issues should NOT be reported via Github and should instead be reported via the process described [here](SECURITY.md).
+Security issues should NOT be reported via GitHub and should instead be reported via the process described [here](SECURITY.md).
+
+## Working On Issues
+
+Once you have decided to contribute to Podman by working on an issue, check the unassigned backlog of open issues in the
+repository you want to work. If you want to work on a specific issue that is already assigned but does not appear
+to be actively being worked on, please ping the assignee in the issue and ask if you can take over.
+If they do not respond after several days, you can notify a maintainer to have the issue reassigned.
+When working on an issue, please always assign it to yourself.
+In some repositories you can use the `/assign` bot command in a comment on an issue to assign it to yourself. If that does not work simply state in the comment that you are working on it.
+
+Never open a PR for an issue when another PR is already open and linked to that issue. If the existing PR was not
+reviewed yet; try contacting a maintainer to ask about the status if you'd like to see the fix merged.
+If the PR was reviewed but the author abandoned it, i.e., did not respond to review comments, you can ask a maintainer
+if you can take it over instead.
 
 ## Submitting Pull Requests
 
 No Pull Request (PR) is too small!
 Typos, additional comments in the code, new test cases, bug fixes, new features, more documentation, ... it's all welcome!
+
+If you are a new contributor to the project, please do not create more than two open Pull Requests. If the existing PRs
+have not been reviewed yet, please wait before opening more PRs; this may be enforced via a GitHub setting depending
+on the repository activity. Do not spam-ping maintainers for reviews. If the PR has not been reviewed after several
+weeks, you can try to ping a maintainer and ask nicely or use our [communication channels](#communications).
 
 Our projects follow the normal GitHub PR workflow for contributions.
 If you never worked with GitHub and git before you likely first need to understand some basic about them.
@@ -83,7 +129,7 @@ that contain much more detail.
 All development happens on the `main` branch so all PRs should be submitted against that branch.
 Maintainers will take care of backporting if needed.
 
-While bug fixes can first be identified via an "issue" in Github, that is not required.
+While bug fixes can first be identified via an "issue" in GitHub, that is not required.
 It's ok to just open up a PR with the fix, but make sure you include the same information you would have included in an issue - like how to reproduce it.
 
 PRs for new features should include some background on what use cases the new code is trying to address.
@@ -108,11 +154,15 @@ Often squashing down to just one commit is acceptable since in the end the entir
 When in doubt, ask a maintainer how they prefer it.
 
 When your PR fixes an issue, please note that by including `Fixes: #00000` in the commit description.
+For a simple PR with one commit the PR description should normally be just the same message you wrote
+in the commit message.
 More details on this are below, in the "Describe your changes in Commit Messages" section.
 
-This repository follows a two-ack policy for merges.
-PRs will be approved by maintainers listed in the `MAINTAINERS.md` file in the repository.
-They will then be merged by a repo owner. Two reviews are required for a pull request to merge.
+Most of our repositories follow a two-ack policy for merges.
+PRs will be approved and reviewed by maintainers or reviewers listed in the `MAINTAINERS.md` file from the
+respective repository or the core maintainers which are listed here [`MAINTAINERS.md`](MAINTAINERS.md).
+They will then be merged by one of these maintainers. Two reviews are normally required for a pull request to be merged.
+Small PRs, like a simple typo fix or a small dependency update, are OK to be merged with just one review.
 
 ### Describe your Changes in Commit Messages
 
@@ -138,10 +188,13 @@ It’s important to describe the change in plain English for the reviewer to ver
 
 Solve only one problem per patch.
 If your description starts to get long, that’s a sign that you probably need to split up your patch.
+For a feature or bug, we expect code, docs, and tests to be part of the same commit. Do not split them into
+separate commits unless they are actually about different things.
 
-If the patch fixes a logged bug entry, refer to that bug entry by number or URL.
+If the patch fixes a logged bug entry, refer to that bug entry by number or URL at the end of the commit message
+but before the [DCO Sign-off](#DCO-Sign-off) line.
 If the patch follows from a mailing list discussion, give a URL to the mailing list archive.
-Please format these lines as `Fixes:` followed by the URL or, for Github bugs, the bug number preceded by a #.
+Please format these lines as `Fixes:` followed by the URL or, for GitHub bugs, the bug number preceded by a #.
 For example:
 
 ```
@@ -149,11 +202,12 @@ Fixes: #00000
 Fixes: https://github.com/podman-container-tools/<repository>/issues/00000
 ```
 
-However, try to make your explanation understandable without external resources.
+However, try to make your explanation understandable without external resources. The shared URL should also not
+be a private site to ensure all contributors and maintainers can access it.
 In addition to giving a URL to a mailing list archive or bug, summarize the relevant points of the discussion that led to the patch as submitted.
 
 If you want to refer to a specific commit, don’t just refer to the SHA-1 ID of the commit.
-Please also include the oneline summary of the commit, to make it easier for reviewers to know what it is about. If the commit was merged in Github, referring to a Github PR number is also a good option, as that will retain all discussion from development, and makes including a summary less critical.
+Please also include the oneline summary of the commit, to make it easier for reviewers to know what it is about. If the commit was merged in GitHub, referring to a GitHub PR number is also a good option, as that will retain all discussion from development, and makes including a summary less critical.
 Examples:
 
 ```
@@ -174,9 +228,9 @@ The following git config settings can be used to add a pretty format for outputt
         fixes = Fixes: %h (\"%s\")
 ```
 
-### Sign your PRs
+### DCO Sign-off
 
-The sign-off is a line at the end of the explanation for the patch.
+The DCO sign-off is a line at the end of the commit message for the given patch.
 Your signature certifies that you wrote the patch or otherwise have the right to pass it on as an open-source patch.
 The rules are simple: if you can certify the below (from [developercertificate.org](http://developercertificate.org/)):
 
@@ -218,7 +272,7 @@ By making a contribution to this project, I certify that:
     this project or the open source license(s) involved.
 ```
 
-Then you just add a line to every git commit message:
+Then you just add a line to the end of every git commit message:
 
     Signed-off-by: Joe Smith <joe.smith@email.com>
 
@@ -227,21 +281,34 @@ A real name does not require a legal name, nor a birth name, nor any name that a
 Your real name is the name you convey to people in the community for them to use to identify you as you.
 The key concern is that your identification is sufficient enough to contact you if an issue were to arise in the future about your contribution.
 
-If you set your `user.name` and `user.email` git configs, you can sign your commit automatically with `git commit -s`.
+Please set your `user.name` and `user.email` git configs correctly, then you can sign-off your commits automatically with `git commit -s`
+so there should never be a need to add this line manually. The git Author field must match the the Signed-off-by line.
+
+Note while the term "sign" is used this has nothing to do with real digital signing, like an gpg signature. So there is no requirement to
+sign commits with gpg or similar.
+
+Commits without a correct DCO Signed-off-by line cannot be merged or even considered.
 
 ### Code review
 
 Once the PR is submitted a reviewer will take a look at it.
-Should nobody respond to it within 2 weeks please ping a maintainer.
+Should nobody respond to the PR after several weeks, please ping a maintainer on GitHub or
+use our [Communications](#communications) channel and ask there.
 Sometimes PRs are overlooked or forgotten.
 
-Keep an eye out for the CI results on the PR.
+Keep an eye out for the CI results on the PR. If you are a new contributor, a maintainer must first approve the GitHub workflows.
 If all is well then all tasks should succeed.
 On some repos the CI tests can take several hours to finish.
 If something failed, try to take a look at the logs to see if that seems related to your change or not.
 Then try to fix your code or the test depending on what you think is right.
 If you are unsure or think it is unrelated, ask a maintainer.
-Some tests are flaky and will pass on a re-run.
+Some tests are flaky and will pass on a re-run. If you lack permissions to rerun the tests,
+just wait for a maintainer to rerun them for you. Do not unnecessarily force push
+the branch in that case.
+
+The Primary CI system we use is GitHub Actions. Jobs triggered by Packit are not merge blockers
+and should be considered of secondary importance. Contributors and maintainers should feel free
+to ignore failure status on such jobs.
 
 After the reviewers and maintainers take a look, they will either write a comment stating `LGTM` (looks good to me) and approve the PR, in which case you do not need to do any further changes, or they write a comment with review feedback that you should address.
 Note that most changes require two reviews so only the second reviewer will actually merge the PR.
@@ -256,7 +323,7 @@ Our projects merge the commits as is and will not squash them on merge to preser
 ### Rebasing
 
 When you create a branch to work on a fix or feature, it no longer will be updated with the latest changes from the upstream `main` branch.
-In order to keep your branch up to date you should rebase.
+In order to keep your branch up to date you should rebase. Please never use a merge to do this as this will clutter the history with unnecessary commits.
 
 In order to do so add the upstream repo as remote in git, i.e. for podman-container-tools/podman use:
 ```
@@ -280,7 +347,7 @@ In this case, Git does not know which change is right.
 You will need to manually resolve it.
 Check [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line) for more information on how to do this.
 
-It is recommended to always rebase on a new push to ensure it is testing against the latest code.
+It is strongly recommended to always rebase on a new push to ensure it is testing against the latest code.
 
 ## Find bad changes with git bisect
 
@@ -336,3 +403,8 @@ Dynamically linked external libraries, external programs called by the tool, or 
 In these cases, identifying the cause will be more difficult.
 
 There is much more useful information in the [git documentation](https://git-scm.com/docs/git-bisect) about this.
+
+## Becoming a Maintainer
+
+Regular contributors may like to become a maintainer over time.
+The process to do so is spelled out in our [Governance](GOVERNANCE.md#Contributor-Ladder).
