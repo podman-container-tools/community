@@ -235,7 +235,7 @@ have a MAINTAINERS.md file then it is assumed that only Core Maintainers have re
 
 Involuntary removal/demotion of a contributor happens when responsibilities and requirements aren't being met. This may include repeated patterns of inactivity, an extended period of inactivity, a period of failing to meet the requirements of your role, and/or a violation of the Code of Conduct. This process is important because it protects the community and its deliverables while also opening up opportunities for new contributors to step in.
 
-Involuntary removal or demotion of Maintainers and Reviewers is handled through a vote by a majority of the current Maintainers. Core Maintainers may be involuntarily removed by a majority vote of current Core Maintainers or, if all Core Maintainers have stepped down or are inactive according to the inactivity policy, by a supermajority (66%) vote of maintainers.
+Involuntary removal or demotion of Maintainers and Reviewers is handled through a vote by a majority of the current Maintainers. Core Maintainers or Community Managers may be involuntarily removed by a majority vote of current Core Maintainers or, if all Core Maintainers have stepped down or are inactive according to the inactivity policy, by a supermajority (66%) vote of maintainers.
 
 ---
 
