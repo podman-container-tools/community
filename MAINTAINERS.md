@@ -16,7 +16,6 @@ Maintainers and Reviewers for each project in this GitHub Organization are found
 | Giuseppe Scrivano | [giuseppe](https://github.com/giuseppe)                  | Core Maintainer   | [Red Hat](https://github.com/RedHatOfficial) |
 | Miloslav Trmač    | [mtrmac](https://github.com/mtrmac)                      | Core Maintainer   | [Red Hat](https://github.com/RedHatOfficial) |
 | Mohan Boddu       | [mohanboddu](https://github.com/mohanboddu)              | Community Manager | [Red Hat](https://github.com/RedHatOfficial) |
-| Neil Smith        | [actionmancan](https://github.com/actionmancan)          | Community Manager | [Red Hat](https://github.com/RedHatOfficial) |
 | Tom Sweeney       | [TomSweeneyRedHat](https://github.com/TomSweeneyRedHat/) | Community Manager | [Red Hat](https://github.com/RedHatOfficial) |
 
 
