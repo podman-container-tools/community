@@ -228,6 +228,10 @@ The following git config settings can be used to add a pretty format for outputt
         fixes = Fixes: %h (\"%s\")
 ```
 
+Never add trailers or attribution lines for coding agents to commit messages or PR descriptions
+(for example `Co-authored-by:`, `Assisted-by:`, `Generated-by:`, or "Generated with ..." lines).
+Only the human contributor's `Signed-off-by:` is allowed.
+
 ### DCO Sign-off
 
 The DCO sign-off is a line at the end of the commit message for the given patch.
