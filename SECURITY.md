@@ -49,7 +49,10 @@ your vendor about any fixes and not us (the upstream project).
 
 ## Security Vulnerability Response
 
-Each report is acknowledged and analyzed by the maintainers within 3 working days.
+Each report is acknowledged and analyzed by the maintainers within 3 working days. If you have not received an
+acknowledgement after one week please ping again on the Github advisory or send to our mailing list and ask for
+an update. Please keep in mind during holiday season at the end of the year replies can take significantly
+longer than normal.
 
 Any vulnerability information shared with maintainers stays within a Podman Container Tools project
 and will not be disseminated to other projects unless it is necessary to get the issue fixed.
