@@ -17,13 +17,15 @@ However, most of the things here listed are very generic and apply when contribu
 
 * [LLM ("AI") Policy](#llm-ai-policy)
 * [Communications](#communications)
-* [Reporting Issues](#reporting-issues)
-* [Working On Issues](#working-on-issues)
+* [Issues](#issues)
+  * [Reporting Issues](#reporting-issues)
+  * [Working On Issues](#working-on-issues)
 * [Submitting Pull Requests](#submitting-pull-requests)
   * [Describe your Changes in Commit Messages](#describe-your-changes-in-commit-messages)
   * [DCO Sign-off](#DCO-Sign-off)
   * [Code review](#code-review)
   * [Rebasing](#rebasing)
+* [Taking over or closing inactive pull requests](#taking-over-or-closing-inactive-pull-requests)
 * [Find bad changes with git bisect](#find-bad-changes-with-git-bisect)
 * [Becoming a Maintainer](#becoming-a-maintainer)
 
@@ -52,7 +54,9 @@ Please do not spam this channel with unrelated information.
 
 We follow the CNCF [Code of Conduct](https://github.com/cncf/foundation/blob/main/code-of-conduct.md) across all channels and repositories.
 
-## Reporting Issues
+## Issues
+
+### Reporting Issues
 
 Before reporting an issue, check our backlog of Open GitHub Issues to see if someone else has already reported it.
 If so, feel free to add your scenario, or additional information, to the discussion.
@@ -88,7 +92,7 @@ may need to work on. It is not a tool to get generic end user support, you can u
 Please don't include any private/sensitive information in your issue!
 Security issues should NOT be reported via GitHub and should instead be reported via the process described [here](SECURITY.md).
 
-## Working On Issues
+### Working On Issues
 
 Once you have decided to contribute to Podman by working on an issue, check the unassigned backlog of open issues in the
 repository you want to work. If you want to work on a specific issue that is already assigned but does not appear
@@ -99,8 +103,10 @@ In some repositories you can use the `/assign` bot command in a comment on an is
 
 Never open a PR for an issue when another PR is already open and linked to that issue. If the existing PR was not
 reviewed yet; try contacting a maintainer to ask about the status if you'd like to see the fix merged.
-If the PR was reviewed but the author abandoned it, i.e., did not respond to review comments, you can ask a maintainer
-if you can take it over instead.
+If a PR has gone inactive waiting on the author (often labeled `stale-pr` after more than 30 days), a Maintainer may take it over, mark it
+`takeover-welcome` for the community, or close it—see [Taking over or closing inactive pull requests](#taking-over-or-closing-inactive-pull-requests).
+Contributors should only take over a PR when it is labeled `takeover-welcome`.
+Do not try to take over a PR that is waiting on Maintainer or reviewer feedback.
 
 ## Submitting Pull Requests
 
@@ -352,6 +358,92 @@ You will need to manually resolve it.
 Check [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line) for more information on how to do this.
 
 It is strongly recommended to always rebase on a new push to ensure it is testing against the latest code.
+
+## Taking over or closing inactive pull requests
+
+Sometimes a pull request stalls: the author stops responding to review feedback, cannot rebase, or otherwise cannot finish the work.
+After a period of inactivity, Maintainers may take the change over, offer it to the community, or close the PR.
+
+Prefer helping the original author finish whenever they are still engaged.
+
+### After 30 days of inactivity
+
+Many repositories use a stale workflow. After **30 days** with no activity, the PR is typically labeled `stale-pr` and a reminder is posted.
+Activity usually removes the stale label and resets the timer.
+
+This process is for PRs stalled waiting on the **author** (no reply to review, cannot rebase, abandoned work).
+It does **not** apply when the PR is waiting on Maintainers or reviewers—do not ask to take those over, and do not label them `takeover-welcome`.
+
+Once a PR has had **30 days of inactivity** waiting on the author (typically marked `stale-pr`), a Maintainer may:
+
+* **Take it over** (Path A), if the change is still wanted and someone (usually a Maintainer) will finish it; or
+* **Offer it for community take-over** (Path B), by adding the `takeover-welcome` label, if the change is still wanted but no Maintainer will finish it now; or
+* **Close the PR**, if the change is not wanted, is superseded, needs a different design, or is not worth finishing.
+
+All paths use the ask-and-wait steps unless a Maintainer has already completed them and labeled the PR `takeover-welcome`.
+
+Closing does **not** reject the idea forever.
+The original author or another contributor may open a **new** pull request later.
+Link to the old PR (`Based on #NNNN`), credit prior authors, and coordinate if a take-over is already in progress.
+
+### Ask first, then wait one week
+
+1. **Comment on the PR**, @-mention the author, and say what you intend to do if they do not respond (Maintainer take-over, mark `takeover-welcome`, or close).
+2. **Wait one week** for an answer.
+3. **If the author responds** and wants to continue, let them finish.
+4. **If there is no answer after one week**, proceed as you stated.
+
+Skip the one-week wait only when the author has already asked someone to finish or close the work, when the PR is already labeled `takeover-welcome` (a Maintainer already asked and waited), or when a release-critical fix is blocked on a nearly complete PR.
+Still leave a comment stating what you are doing.
+
+### Path A: Maintainer (single-person) take-over
+
+One person—usually a Maintainer—owns the whole finish: after the wait, open a replacement PR, credit/link/supersede, and drive normal review and merge.
+
+### Path B: Community take-over (`takeover-welcome`)
+
+The `takeover-welcome` label signals that the change is worth finishing and the community may take it over.
+Contributors should only take over PRs that have this label.
+
+**Maintainer offer:** When the change is valuable but no Maintainer will finish it immediately, after the wait add **`takeover-welcome`** and comment that others may take the PR over, noting what work remains.
+
+**Contributor:** Comment first (`I will take this over`), then open a replacement PR. No extra one-week wait—the Maintainer already asked the author.
+
+Only one active take-over at a time; a Maintainer breaks ties.
+Remove `takeover-welcome` when a replacement is opened, Path A starts, or the offer is withdrawn / PR closed.
+
+### Opening the replacement PR
+
+1. Open a **new** PR based on the original commits (fetch/checkout, rebase, fix up).
+   Prefer a new PR over pushing to the author's fork unless "Allow edits from maintainers" is enabled and a small push is kinder.
+2. Credit the original author (`Based on work by @original-author in #NNNN`).
+   Keep their `Signed-off-by` on reused commits; add your own on commits you author.
+   Do not add AI/agent attribution trailers.
+3. Link both ways (`Supersedes #NNNN` / `Closes #NNNN`) and comment on the original.
+   Close the original as superseded when appropriate.
+4. Follow normal review rules for that repository.
+   The person who took over should not be the sole approving reviewer of their own follow-up commits.
+
+### Git commands for a take-over
+
+Replace `NNNN` with the original PR number. `origin` is your fork; `upstream` is the project's canonical remote:
+
+```bash
+git fetch upstream pull/NNNN/head:takeover-NNNN
+git checkout takeover-NNNN
+git fetch upstream
+git rebase upstream/main
+# fix up; git commit -s for commits you author
+git push -u origin takeover-NNNN
+```
+
+Then open a new pull request from that branch against `upstream` `main` (for example via the GitHub UI). In the description, credit the original author and link the old PR, for example:
+
+```text
+Based on work by @original-author in #NNNN.
+
+Supersedes #NNNN.
+```
 
 ## Find bad changes with git bisect
 
